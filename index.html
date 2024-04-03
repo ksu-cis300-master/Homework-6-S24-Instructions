@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>index</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='homework-assignment-6-revised-task-scheduler'><span>Homework Assignment 6: Revised Task Scheduler</span></h1><p><span>For this assignment, you will improve the solution to Homework Assignment 2 by doing a better job of balancing the workload and allowing more flexibility in assigning schedules.</span></p><h2 id='0-contents'><span>0. Contents</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#homework-assignment-6-revised-task-scheduler">Homework Assignment 6: Revised Task Scheduler</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#0-contents">0. Contents</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#1-user-requirements">1. User Requirements</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n24"><a class="md-toc-inner" href="#2-starting-the-assignment">2. Starting the Assignment</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n26"><a class="md-toc-inner" href="#3-user-interface">3. User Interface</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n99"><a class="md-toc-inner" href="#4-bipartite-matching">4. Bipartite Matching</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n106"><a class="md-toc-inner" href="#41-augmenting-paths">4.1. Augmenting Paths</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n123"><a class="md-toc-inner" href="#42-when-augmenting-paths-exist">4.2. When Augmenting Paths Exist</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n144"><a class="md-toc-inner" href="#43-the-matching-algorithm">4.3. The Matching Algorithm</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n166"><a class="md-toc-inner" href="#5-software-architecture">5. Software Architecture</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n171"><a class="md-toc-inner" href="#6-data-structures">6. Data Structures</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n173"><a class="md-toc-inner" href="#61-the-bipartite-graph">6.1. The Bipartite Graph</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n175"><a class="md-toc-inner" href="#62-dictionaries">6.2. Dictionaries</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n178"><a class="md-toc-inner" href="#7-coding-requirements">7. Coding Requirements</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n180"><a class="md-toc-inner" href="#71-the-node-class">7.1. The Node Class</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n182"><a class="md-toc-inner" href="#72-the-timesscheduledcomparer-class">7.2. The TimesScheduledComparer Class</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n184"><a class="md-toc-inner" href="#73-the-schedule-class">7.3. The Schedule Class</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n202"><a class="md-toc-inner" href="#731-a-method-to-initialize-the-number-of-times-each-given-node-has-been-scheduled">7.3.1. A method to initialize the number of times each given node has been scheduled</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n215"><a class="md-toc-inner" href="#732-the-getoneday-method">7.3.2. The GetOneDay method</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n453"><a class="md-toc-inner" href="#733-the-constructor">7.3.3. The constructor</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n477"><a class="md-toc-inner" href="#74-the-scheduleio-class">7.4. The ScheduleIO Class</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n496"><a class="md-toc-inner" href="#741-the-readinput-method">7.4.1. The <strong>ReadInput</strong> method</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n500"><a class="md-toc-inner" href="#742-the-writeoutput-method">7.4.2. The <strong>WriteOutput</strong> method</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n286"><a class="md-toc-inner" href="#75-the-userinterface-class">7.5. The UserInterface Class</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n365"><a class="md-toc-inner" href="#8-performance-and-testing">8. Performance and Testing</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n424"><a class="md-toc-inner" href="#9-submitting-your-assignment">9. Submitting Your Assignment</a></span></p></div><h2 id='1-user-requirements'><span>1. User Requirements</span></h2><p><span>After using the program you wrote for Homework Assignment 2, the organization now would like the following modifications made:</span></p><ul><li><span>Some users of the earlier version report that it sometimes will produce a schedule with a very unbalanced workload. They want it to do a better job of balancing the workload.</span></li><li><span>Workers are to be restricted from being assigned more than one task in a single day. If this restriction makes it impossible to assign workers to all tasks, some tasks will be left unassigned for that day.</span></li></ul><h2 id='2-starting-the-assignment'><span>2. Starting the Assignment</span></h2><p><span>Create a GitHub repository using the link provided in Canvas, and clone it to your local machine. This repository contains the model solution to Homework 2 with the </span><strong><span>Ksu.Cis300.LinkedListLibrary</span></strong><span> project from the model solution to Lab Assignment 11 and the </span><strong><span>Ksu.Cis300.Graphs</span></strong><span> project from the model solution to Lab Assignment 35 added. The files in the </span><strong><span>Data</span></strong><span> folder have been replaced by different input files.</span></p><h2 id='3-user-interface'><span>3. User Interface</span></h2><p><span>The GUI should remain unchanged. The only differences in functionality are that the schedules produced will tend to balance the load better, and that workers will never be assigned to more than one task in a single day. </span></p><h2 id='4-bipartite-matching'><span>4. Bipartite Matching</span></h2><p><span>The solution strategy you will use is to model the problem as an instance </span><em><span>bipartite matching</span></em><span>. A </span><em><span>bipartite graph</span></em><span> is an undirected graph whose nodes are partitioned into two disjoint sets, and whose edges each connect a node from one of the sets to a node in the other set. For this problem, the nodes are the workers and the tasks, and the edges connect a worker with a task if that worker is qualified to do that task. For example, Figure 1 shows a bipartite graph for an instance with 10 workers and 8 tasks:</span></p><p><span> </span><img src="bipartite.jpg" referrerpolicy="no-referrer" alt="bipartite"></p><p><span>In the above instance, worker w0 is qualified only for task t2, w1 is qualified for t0 and t5, etc.</span></p><p><span>A </span><em><span>matching</span></em><span> in a bipartite graph is a subset of the edges in which no two edges meet at the same node. For example, a matching for the graph in Figure 1 is shown in Figure 2 below.</span></p><p><img src="matching1.jpg" referrerpolicy="no-referrer" alt="A matching"></p><p><span>Our goal is to find a matching of maximum size. Such a matching gives an assignment of workers to tasks, maximizing the number of tasks filled (or equivalently, the number of workers assigned.)</span></p><h3 id='41-augmenting-paths'><span>4.1. Augmenting Paths</span></h3><p><span>Central to the bipartite matching algorithm is the notion of an </span><em><span>augmenting path</span></em><span>. Given a matching, an augmenting path for that matching is a path that:</span></p><ul><li><span>starts at an unmatched worker node;</span></li><li><span>always uses an edge in the matching in going from a task node to a worker node; and</span></li><li><span>ends at an unmatched task node.</span></li></ul><p><span>For example, Figure 3 below shows an augmenting path (i.e., w5-t1-w2-t3-w4-t5) for the matching from Figure 2.</span></p><p><img src="augmenting1.jpg" referrerpolicy="no-referrer" alt="Augmenting paths"></p><p><span>Because the edges in a bipartite graph each connect a node from one set to a node in the other set, any path will alternate between worker nodes and task nodes. Thus, every second edge in an augmenting path will come from the matching, but no other edge will. As a result, each node except the first and last in an augmenting path will be connected to one edge from the matching and one edge from the augmenting path, but not in the matching. Finally, because the path begins with a worker node and ends with a task node, the path will always contain one more edge that is not from the matching than edges that are from the matching. We can therefore obtain a larger matching by removing the edges that are in both the augmenting path and the matching, and adding the other edges from the augmenting path:</span></p><p><img src="matching2.jpg" referrerpolicy="no-referrer" alt="Extending a matching"></p><p><span>We therefore have the following facts about augmenting paths:</span></p><p><em><strong><span>Fact 1:</span></strong></em><span> </span><em><span>When we augment a matching using an augmenting path, the size of the matching increases by 1.</span></em></p><p><em><strong><span>Fact 2:</span></strong></em><span> </span><em><span>When we augment a matching using an augmenting path, all nodes in the original matching are in the resulting matching (possibly matched with different nodes).</span></em></p><h3 id='42-when-augmenting-paths-exist'><span>4.2. When Augmenting Paths Exist</span></h3><p><span>We can learn a lot about augmenting paths by seeing what happens when we combine two matchings of different sizes. Consider, for example, the matching shown in Figure 5 below.</span></p><p><img src="matching3.jpg" referrerpolicy="no-referrer" alt="A matching"></p><p><span>If we combine this matching with the larger matching from Figure 2, we obtain the following:</span></p><p><img src="combination.jpg" referrerpolicy="no-referrer" alt="Two matchings combined"></p><p><span>Because the edges come from two matchings, each node can be on at most two of these edges. These edges can therefore be partitioned into paths, with no two paths having nodes in common. These paths are of the following types:</span></p><ol start='' ><li><span>Paths such as w9-t7, which are formed by a single edge belonging to both matchings. Because such an edge belongs to both matchings, it cannot be connected to any other edges from either matching.</span></li><li><span>Cycles such as w3-t4-w7-t2-w3. Because edges alternate between the two matchings, these cycles contain the same number of edges from both matchings.</span></li><li><span>Non-cyclic even-length paths such as w1-t0-w5. Because edges alternate between the two matchings, these paths also contain the same number of edges from both matchings.</span></li><li><span>Odd-length paths such as w4-t3-w8-t6. Because edges alternate between the two matchings, these paths contain one more edge from one matching than from the other. Each of these is therefore an augmenting path for the matching with fewer edges on the path.</span></li></ol><p><span>Because the two matchings are of different sizes and each edge from either matching occurs in exactly one path, there must always be some path containing more edges from the larger matching than from the smaller matching; i.e., there must be a type-4 path with more edges from the larger matching. Such a path is an augmenting path for the smaller matching. We therefore have the following additional fact:</span></p><p><em><strong><span>Fact 3:</span></strong></em><span> </span><em><span>If a matching is not of maximum size, it has an augmenting path.</span></em></p><p><span>Finally, consider what happens if the nodes in the smaller matching all belong to the larger matching, as in Figure 7 below (t2, t3, t4, t7, w3, w7, w8, and w9 belong to both matchings, and t0, t1, t6, w1, w2, and w4 belong to the larger matching only).</span></p><p><img src="combination2.jpg" referrerpolicy="no-referrer" alt="The nodes in one include the nodes in another"></p><p><span>Let </span><em><span>w</span></em><span> be a worker node that is in the larger matching but not the smaller matching (for example, let </span><em><span>w</span></em><span> be w4). Then </span><em><span>w</span></em><span> begins a non-cyclic path that starts with an edge from the larger matching. Because edges in the path alternate between the matchings, any time this path enters another worker node, it does so via an edge from the smaller matching. Because each node in the smaller matching is also in the larger matching, this path cannot end at a worker node - it continues via an edge from the larger matching. The end of this path must therefore be at a task node. Hence, this path is an augmenting path for the smaller matching. This gives us the following fact:</span></p><p><em><strong><span>Fact 4:</span></strong></em><span> </span><em><span>Let</span></em><span> M </span><em><span>be any matching, and let</span></em><span> w </span><em><span>be a worker node. Suppose that</span></em><span> w </span><em><span>is not in</span></em><span> M</span><em><span>. If there is a matching containing all the nodes of</span></em><span> M</span><em><span>, as well as</span></em><span> w</span><em><span>, then</span></em><span> M </span><em><span>has an augmenting path from</span></em><span> w</span><em><span>.</span></em></p><h3 id='43-the-matching-algorithm'><span>4.3. The Matching Algorithm</span></h3><p><span>Based on the four facts derived above, we can now give an algorithm for finding a maximum-sized matching, while attempting to balance the workload of the workers. The overall strategy is to begin with an empty matching, then increase its size by finding augmenting paths. </span></p><p><span>To find an augmenting path from a given worker node, we can use breadth-first search (see Lab 34) with the following modifications:</span></p><ul><li><span>Whenever we reach a matched task node, instead of enqueuing all outgoing edges, we follow the edge to the matched node and enqueue all of the outgoing edges from its destination. Essentially, instead of processing edges one at a time, we are processing them in pairs - an edge from a worker to a task, followed by an edge in the matching leading to a worker. Both of these edges need to be recorded in the dictionary storing the path information. Proceeding in this way, the queue will only contain edges from the workers to tasks. </span></li><li><span>If we reach an unmatched task node, we have found an augmenting path. </span></li></ul><p><span>For each augmenting path we find, we augment the matching as described in the </span><a href='#41-augmenting-paths'><span>Section 4.1. Augmenting Paths</span></a><span>. Specifically, because the above algorithm for finding an augmenting path is based on breadth-first search, it builds a dictionary storing the path information it collects. This dictionary gives the predecessor of each node, starting with the end of the augmenting path (a task node) and ending at the start of the path (a worker node). We can therefore iterate through this path two nodes at a time, and each iteration except the last will take us to another task node (because the predecessor of the start node is itself, this process will end at the start node, which is a worker). On each iteration, we therefore match the current task node to its predecessor (a worker node). By Fact 1, this increases the size of the matching by 1. </span></p><p><span>As we search for augmenting paths, there is no need to start searching from any node more than once - if we find an augmenting path, this node will remain matched (Fact 2), and if we don&#39;t find one, no augmenting path will subsequently exist from this node (Facts 2 and 4). In order to try to achieve the desired balance, it therefore makes sense to consider the worker nodes in order of the number of times they have been scheduled. </span></p><p><span>The complete matching algorithm therefore is as follows:</span></p><ol start='' ><li><p><span>Sort the workers by the number of times each node has been scheduled.</span></p></li><li><p><span>For each worker node:</span></p><ol type="a"><li>If the number of pairs in the current matching is as large as either the number of workers or the number of tasks, return this matching.</li><li>Look for an augmenting path using the modified breadth-first search described above.</li><li>If an augmenting path is found, use it to augment the current matching, as described above.</li></ol></li></ol><p><span>Note that this algorithm does not necessarily give a schedule that is perfectly balanced. In fact, it sometimes can produce schedules that are less balanced than those produced by the solution to Homework 2. However, it does a good job of avoiding very poorly-balanced schedules.</span></p><h2 id='5-software-architecture'><span>5. Software Architecture</span></h2><p><span>The </span><strong><span>Ksu.Cis300.Scheduler</span></strong><span> namespace should contain five classes, as shown in the following class diagram:</span></p><p><img src="ClassDiagram.png" alt="Software Architecture" /></p><p><span>The </span><strong><span>WorkerQueue</span></strong><span> and </span><strong><span>DoublyLinkedListCell</span></strong><span> classes from Homework Assignment 2 will not be used - you can remove them if they get in the way. You will need to make changes to the </span><strong><span>UserInterface</span></strong><span>, </span><strong><span>Schedule</span></strong><span>, </span><strong><span>ScheduleIO</span></strong><span>, and </span><strong><span>Worker</span></strong><span> classes, including renaming </span><strong><span>Worker</span></strong><span> to </span><strong><span>Node</span></strong><span>. The </span><strong><span>TimesScheduledComparer</span></strong><span> will be used to define how comparisons are done when sorting an array or list of </span><strong><span>Node</span></strong><span>s. The </span><strong><span>ScheduleLengthDialog</span></strong><span> class won&#39;t need to be changed.</span></p><p><span>You will not need to make any changes to the </span><strong><span>Ksu.Cis300.Graphs</span></strong><span> or </span><strong><span>Ksu.Cis300.LinkedListLibrary</span></strong><span> namespaces. The types defined in these namespaces are not shown in the class diagram above.</span></p><h2 id='6-data-structures'><span>6. Data Structures</span></h2><p><span>This section discusses the major data structures your program will use. The code you will need to write to use these data structures is described in </span><a href='#7-coding-requirements'><span>Section 7 Coding Requirements</span></a><span> below.</span></p><h3 id='61-the-bipartite-graph'><span>6.1. The Bipartite Graph</span></h3><p><span>You will store the workers&#39; qualification information in a </span><strong><span>DirectedGraph</span><span>&lt;</span><span>Node, bool</span><span>&gt;</span></strong><span>. You will not need to store any edge data, but a type parameter for the edge data is required. Because </span><strong><span>bool</span></strong><span> is a small type, it makes sense to use this type for the edge data. If a worker </span><em><span>w</span></em><span> is qualified for a task </span><em><span>t</span></em><span>, the graph should contain an edge from </span><em><span>w</span></em><span> to </span><em><span>t</span></em><span>. The data on these edges can be either </span><strong><span>true</span></strong><span> or </span><strong><span>false</span></strong><span> - it makes no difference which, as this data will not be used. Edges from tasks to workers don&#39;t need to be included because the modified breadth-first search uses edges from a matching to get from tasks to workers.</span></p><h3 id='62-dictionaries'><span>6.2. Dictionaries</span></h3><p><span>Several dictionaries will also be used in this program. Because the algorithm for finding an augmenting path is a modification of breadth-first search, it will use a </span><strong><span>Dictionary</span><span>&lt;</span><span>Node, Node</span><span>&gt;</span></strong><span> to store the path information. Matchings will also be stored in </span><strong><span>Dictionary</span><span>&lt;</span><span>Node, Node</span><span>&gt;</span></strong><span>s. Keys in these dictionaries will be matched task nodes, and the associated values for each key will be the worker node to which it is matched. </span></p><p><span>We use dictionaries because they provide quick lookups and can be modified quickly. Don&#39;t embarrass yourself by using a loop to look up a key - use indexing or the </span><strong><span>ContainsKey</span></strong><span> or </span><strong><span>TryGetValue</span></strong><span> method instead, whichever is appropriate. Iterate through a dictionary only when you need to process all keys and/or values in the dictionary.</span></p><h2 id='7-coding-requirements'><span>7. Coding Requirements</span></h2><p><span>Specific coding requirements for all classes in the </span><strong><span>Ksu.Cis300.Scheduler</span></strong><span> project are given in what follows. You do not need to use the same names as those given here or shown in the class diagram as long as you follow the </span><a href='https://cis300.cs.ksu.edu/appendix/style/naming/'><span>naming conventions</span></a><span>. In some cases, you are required to break the code into more </span><strong><span>private</span></strong><span> methods than what are described. You may include even more </span><strong><span>private</span></strong><span> methods if you believe that improves the code.</span></p><h3 id='71-the-node-class'><span>7.1. The Node Class</span></h3><p><span>Rename your </span><strong><span>Worker</span></strong><span> class to </span><strong><span>Node</span></strong><span>, as it will now be used as any node in the graph - either a worker or a task. You will no longer need the </span><code>_qualifications</code><span> field or the </span><strong><span>IsQualified</span></strong><span> method, as this information will be stored elsewhere. </span></p><p><span>Modify the constructor so that it takes as its parameter a single </span><strong><span>string</span></strong><span> (i.e., not an array) giving the name of the worker/task, and remove all initialization code for </span><code>_qualifications</code><span>. Also remove the code that checks the length of this parameter.</span></p><h3 id='72-the-timesscheduledcomparer-class'><span>7.2. The TimesScheduledComparer Class</span></h3><p><span>This class should implement the </span><strong><span>IComparer</span><span>&lt;</span><span>Node</span><span>&gt;</span></strong><span> interface. The only member it needs is the </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.icomparer-1.compare?view=net-6.0'><strong><span>Compare</span></strong></a><span> method required by the interface. This method should take two </span><strong><span>Node</span></strong><span>s as its parameters. If either </span><strong><span>Node</span></strong><span> is </span><strong><span>null</span></strong><span>, throw an </span><strong><span>ArgumentNullException</span></strong><span>. Otherwise, compare their </span><strong><span>TimesScheduled</span></strong><span> properties using one of these </span><strong><span>int</span></strong><span>s&#39; </span><strong><span>CompareTo</span></strong><span> methods. The result of this call should be returned. Be sure to compare the </span><strong><span>TimesScheduled</span></strong><span> in the same order as the </span><strong><span>Node</span></strong><span>s are provided in the parameter list.</span></p><h3 id='73-the-schedule-class'><span>7.3. The Schedule Class</span></h3><p><span>You will need to add a </span><strong><span>private static readonly TimesScheduledComparer</span></strong><span> field, initialized to a new instance, to use for sorting the workers by their times scheduled. You will also need to modify the constructor and the two </span><strong><span>private</span></strong><span> methods and add at least three more </span><strong><span>private</span></strong><span> methods. The modifications to the constructor and the two provided methods are described in what follows.</span></p><h4 id='731-a-method-to-initialize-the-number-of-times-each-given-node-has-been-scheduled'><span>7.3.1. A method to initialize the number of times each given node has been scheduled</span></h4><p><span>You can modify the the </span><strong><span>GetQueue</span></strong><span> method to do this. You should rename it to reflect its changed functionality. It should return nothing - all references to a </span><strong><span>WorkerQueue</span></strong><span> should be removed.</span></p><h4 id='732-the-getoneday-method'><span>7.3.2. The GetOneDay method</span></h4><p><span>The parameters to this method should be changed as follows:</span></p><ul><li><span>Instead of a </span><strong><span>WorkerQueue</span></strong><span>, provide the workers in a </span><strong><span>Node[</span>&nbsp;<span>]</span></strong><span>.</span></li><li><span>Instead of an </span><strong><span>int</span></strong><span> giving the number of tasks, provide the tasks in a </span><strong><span>Node[</span>&nbsp;<span>]</span></strong><span>.</span></li><li><span>Also include a </span><strong><span>DirectedGraph</span><span>&lt;</span><span>Node, bool</span><span>&gt;</span></strong><span> giving the bipartite graph of qualifications.</span></li></ul><p><span>After initializing the </span><strong><span>string[</span>&nbsp;<span>]</span></strong><span>, get a maximum-sized matching for the graph using the algorithm given in </span><a href='#43-the-matching-algorithm'><span>Section 4.3. The Matching Algorithm</span></a><span>. To sort the array of workers, use the </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-6.0#system-array-sort(system-array-system-collections-icomparer)'><strong><span>Array.Sort</span></strong></a><span> method, passing the </span><strong><span>TimesScheduledComparer</span></strong><span> field as the second parameter. </span></p><p><span>After a maximum-sized matching has been found, modify the provided loop so that for each location in the array of tasks, the matching is used to determine whether a worker was scheduled for that task, and if so, which worker is scheduled.</span></p><h4 id='733-the-constructor'><span>7.3.3. The constructor</span></h4><p><span>You will need to change the constructor&#39;s parameter list as follows:</span></p><ul><li><span>Instead of a </span><strong><span>Worker[</span>&nbsp;<span>]</span></strong><span>, provided the workers in a </span><strong><span>Node[</span>&nbsp;<span>]</span></strong><span>.</span></li><li><span>Instead of an </span><strong><span>int</span></strong><span> giving the number of tasks, provide the tasks in a </span><strong><span>Node[</span>&nbsp;<span>]</span></strong><span>.</span></li><li><span>Leave the </span><strong><span>int</span></strong><span> giving the length of the schedule unchanged.</span></li><li><span>Also include, as the last parameter, a </span><strong><span>DirectedGraph</span><span>&lt;</span><span>Node, bool</span><span>&gt;</span></strong><span> giving the bipartite graph of qualifications.</span></li></ul><p><span>If either </span><strong><span>Node[</span>&nbsp;<span>]</span></strong><span> or the graph is </span><strong><span>null</span></strong><span>, throw an </span><strong><span>ArgumentNullException</span></strong><span>. If either of the arrays contains a </span><strong><span>null</span></strong><span> value or a node that is not contained within the graph, throw an </span><strong><span>ArgumentException</span></strong><span>. The only other changes you will need to make are to update the calls to the above methods to agree with the changes you made to these methods.</span></p><h3 id='74-the-scheduleio-class'><span>7.4. The ScheduleIO Class</span></h3><p><span>You will need to modify both </span><strong><span>public</span></strong><span> methods and add at least two </span><strong><span>private</span></strong><span> methods.  The modifications to the </span><strong><span>public</span></strong><span> methods are described in what follows.</span></p><h4 id='741-the-readinput-method'><span>7.4.1. The </span><strong><span>ReadInput</span></strong><span> method</span></h4><p><span>You will need to modify this  method as follows:</span></p><ul><li><span>Change the return type to be a tuple of two </span><strong><span>Node[</span>&nbsp;<span>]</span></strong><span>s. These will be the task nodes (not just the task names) and the worker nodes.</span></li><li><span>Include as a second parameter an </span><strong><span>out</span></strong><span> parameter of type </span><strong><span>DirectedGraph</span><span>&lt;</span><span>Node, bool</span><span>&gt;</span></strong><span>. This will be the bipartite graph of qualifications.</span></li><li><span>Instead of building a </span><strong><span>string[</span>&nbsp;<span>]</span></strong><span> containing the task names, it should build a </span><strong><span>Node[</span>&nbsp;<span>]</span></strong><span> containing the task nodes. Each of these nodes should be added to the bipartite graph. </span></li><li><span>Instead of building a </span><strong><span>WorkerQueue</span></strong><span>, it should build a </span><strong><span>Node[</span>&nbsp;<span>]</span></strong><span> containing the worker nodes. It should also add all of these nodes and all of their outgoing edges to the bipartite graph. </span></li></ul><h4 id='742-the-writeoutput-method'><span>7.4.2. The </span><strong><span>WriteOutput</span></strong><span> method</span></h4><p><span>You will need to change the type of the second parameter to </span><strong><span>Node[</span>&nbsp;<span>]</span></strong><span>.  Then you will need to update the remainder of the method to reflect this change.</span></p><h3 id='75-the-userinterface-class'><span>7.5. The UserInterface Class</span></h3><p><span>You will need to modify the </span><code>_tasks</code><span> field to be of type </span><strong><span>Node[</span>&nbsp;<span>]</span></strong><span>. You will also need to add a </span><strong><span>private</span></strong><span> field of type </span><strong><span>DirectedGraph</span><span>&lt;</span><span>Node, bool</span><span>&gt;</span></strong><span> to store the bipartite graph of qualifications. Initialize this field to a new instance to avoid the need to make it nullable.</span></p><p><span>In addition, you will need to modify the code to reflect these changes to the fields and the changes to how </span><strong><span>public</span></strong><span> members of other classes are called. Syntax errors in your code should indicate where changes need to be made. Note that you will need to use the bipartite graph to determine whether a worker is qualified for a task.</span></p><h2 id='8-performance-and-testing'><span>8. Performance and Testing</span></h2><p><span>Unit tests have been provided to test the </span><strong><span>Node</span></strong><span>, </span><strong><span>TimesScheduledComparer</span></strong><span>, and </span><strong><span>Schedule</span></strong><span> classes. You should first work on getting the provided unit tests to pass. Group the tests first by class, then by trait, and work through them alphabetically within these groupings.</span></p><p><span>The unit tests do </span><strong><span>not</span></strong><span> test the </span><strong><span>ScheduleIO</span></strong><span> or </span><strong><span>UserInterface</span></strong><span> classes. You will therefore need to do some interactive testing. Below are several specific tests you should run using input files from the </span><strong><span>Data</span></strong><span> folder. Be sure each matching is valid. The performance should be only slightly slower than the performance of the model solution to Homework 2.</span></p><ul><li><strong><span>data1.csv</span></strong><span>: This is the data set shown in Figure 1 above. A 10-day schedule should schedule each worker 8 times, whereas the model solution to Homework Assignment 2 produces a schedule in which each worker is scheduled 5-9 times.</span></li><li><strong><span>data2.csv</span></strong><span>: A 100-day schedule should schedule each worker 90 times, whereas the model solution to Homework Assignment 2 produces a schedule in which each worker is scheduled 50-95 times. </span></li><li><strong><span>data3.csv</span></strong><span>: This data set should result in a worker being scheduled 0 times for any length of schedule (one worker is qualified for no tasks).</span></li><li><strong><span>data4.csv</span></strong><span>: This file contains a task T3 with no qualified workers; hence, this task will never be assigned a worker.</span></li><li><strong><span>data5.csv</span></strong><span>: This data set has 50 tasks and 100 workers. Set the schedule length to 100. It should generate a schedule in which each worker is scheduled 50 times.</span></li><li><strong><span>no-workers.csv</span></strong><span>: This file contains tasks, but no workers. It should throw an </span><strong><span>IOException</span></strong><span> containing the message, &quot;The file doesn&#39;t have enough lines.&quot;</span></li><li><strong><span>uneven-lines.csv</span></strong><span>: This lines of this file contain different numbers of fields. It should throw an </span><strong><span>IOException</span></strong><span> containing the message, &quot;Line 4 contains the wrong number of fields.&quot;</span></li></ul><h2 id='9-submitting-your-assignment'><span>9. Submitting Your Assignment</span></h2><p><span>Be sure to </span><strong><span>commit</span></strong><span> all your changes, then </span><strong><span>push</span></strong><span> your commits to your GitHub repository. Make sure the </span><strong><span>Ksu.Cis300.Scheduler</span></strong><span> folder in your repository contains all nine .cs files, as we can only grade what is present in the repository. Then submit the </span><em><span>entire URL</span></em><span> of the commit that you want graded. </span></p><p><strong><span>Note:</span></strong><span> The repositories for the homework assignments for this class are set up to use GitHub&#39;s autograding feature to track push times. No actual testing/grading is done, but after each push, the GitHub page for the repository will show a green check mark on the line indicating the latest commit. Clicking that check mark will display a popup indicating that all checks have passed, regardless of whether your program works. You may also get an email indicating that all checks have passed. The only purpose for using the autograding feature in this way is to give us a backup indication of your push times in case you submitted your assignment incorrectly.</span></p></div></div>
+</body>
+</html>
