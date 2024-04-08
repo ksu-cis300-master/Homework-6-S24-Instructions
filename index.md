@@ -1,6 +1,6 @@
 # Homework Assignment 6: Revised Task Scheduler
 
-For this assignment, you will improve the solution to Homework Assignment 2 by doing a better job of balancing the workload and allowing more flexibility in assigning schedules.
+For this assignment, you will improve the solution to Homework Assignment 2 by doing a better job of balancing the workload.
 
 ## 0. Contents
 
@@ -19,13 +19,13 @@ Create a GitHub repository using the link provided in Canvas, and clone it to yo
 
 ## 3. User Interface
 
-The GUI should remain unchanged. The only differences in functionality are that the schedules produced will tend to balance the load better, and that workers will never be assigned to more than one task in a single day. 
+The GUI should remain unchanged. The only differences in functionality are that the schedules produced will tend to balance the load better, and that workers will never be assigned to more than one task in a single day. Because the user interaction is unchanged, no demo video will be provided.
 
 ## 4. Bipartite Matching
 
 The solution strategy you will use is to model the problem as an instance *bipartite matching*. A *bipartite graph* is an undirected graph whose nodes are partitioned into two disjoint sets, and whose edges each connect a node from one of the sets to a node in the other set. For this problem, the nodes are the workers and the tasks, and the edges connect a worker with a task if that worker is qualified to do that task. For example, Figure 1 shows a bipartite graph for an instance with 10 workers and 8 tasks:
 
- ![bipartite](bipartite.jpg)
+![bipartite](bipartite.jpg)
 
 In the above instance, worker w0 is qualified only for task t2, w1 is qualified for t0 and t5, etc.
 
@@ -47,7 +47,7 @@ For example, Figure 3 below shows an augmenting path (i.e., w5-t1-w2-t3-w4-t5) f
 
 ![Augmenting paths](augmenting1.jpg)
 
-Because the edges in a bipartite graph each connect a node from one set to a node in the other set, any path will alternate between worker nodes and task nodes. Thus, every second edge in an augmenting path will come from the matching, but no other edge will. As a result, each node except the first and last in an augmenting path will be connected to one edge from the matching and one edge from the augmenting path, but not in the matching. Finally, because the path begins with a worker node and ends with a task node, the path will always contain one more edge that is not from the matching than edges that are from the matching. We can therefore obtain a larger matching by removing the edges that are in both the augmenting path and the matching, and adding the other edges from the augmenting path:
+Because the edges in a bipartite graph each connect a worker node to a task node, any path will alternate between worker nodes and task nodes. Thus, every second edge in an augmenting path will come from the matching, but no other edge will. As a result, each node except the first and last in an augmenting path will be connected to one edge from the matching and one edge from the augmenting path, but not in the matching. Finally, because the path begins with a worker node and ends with a task node, the path will always contain one more edge that is not from the matching than edges that are from the matching. We can therefore obtain a larger matching by removing the edges that are in both the augmenting path and the matching, and adding the other edges from the augmenting path:
 
 ![Extending a matching](matching2.jpg)
 
@@ -134,7 +134,7 @@ We use dictionaries because they provide quick lookups and can be modified quick
 
 ## 7. Coding Requirements
 
-Specific coding requirements for all classes in the **Ksu.Cis300.Scheduler** project are given in what follows. You do not need to use the same names as those given here or shown in the class diagram as long as you follow the [naming conventions](https://cis300.cs.ksu.edu/appendix/style/naming/). In some cases, you are required to break the code into more **private** methods than what are described. You may include even more **private** methods if you believe that improves the code.
+Specific coding requirements for all classes in the **Ksu.Cis300.Scheduler** project are given in what follows. In order for the unit tests to compile, you will need to use the same names for **public** members as those shown in the class diagram. Be sure to follow the [naming conventions](https://cis300.cs.ksu.edu/appendix/style/naming/) for **private** members. In some cases, you are required to break the code into more **private** methods than what are described. You may include even more **private** methods if you believe that improves the code.
 
 ### 7.1. The Node Class
 
@@ -204,9 +204,9 @@ In addition, you will need to modify the code to reflect these changes to the fi
 
 Unit tests have been provided to test the **Node**, **TimesScheduledComparer**, and **Schedule** classes. You should first work on getting the provided unit tests to pass. Group the tests first by class, then by trait, and work through them alphabetically within these groupings.
 
-The unit tests do **not** test the **ScheduleIO** or **UserInterface** classes. You will therefore need to do some interactive testing. Below are several specific tests you should run using input files from the **Data** folder. Be sure each matching is valid. The performance should be only slightly slower than the performance of the model solution to Homework 2.
+The unit tests do **not** test the **ScheduleIO** or **UserInterface** classes. You will therefore need to do some interactive testing. Below are several specific tests you should run using input files from the **Data** folder. Be sure each matching is valid (i.e., that no worker is assigned more than one task in a given day). The performance should be only slightly slower than the performance of the model solution to Homework 2.
 
-- **data1.csv**: This is the data set shown in Figure 1 above. A 10-day schedule should schedule each worker 8 times, whereas the model solution to Homework Assignment 2 produces a schedule in which each worker is scheduled 5-9 times.
+- **data1.csv**: This is the data set shown in Figure 1 above and used in the unit test **TestLargeGraph** in the class **CScheduleTests**. A 10-day schedule should schedule each worker 8 times, whereas the model solution to Homework Assignment 2 produces a schedule in which each worker is scheduled 5-9 times. Check that this schedule can be correctly saved to a file.
 - **data2.csv**: A 100-day schedule should schedule each worker 90 times, whereas the model solution to Homework Assignment 2 produces a schedule in which each worker is scheduled 50-95 times. 
 - **data3.csv**: This data set should result in a worker being scheduled 0 times for any length of schedule (one worker is qualified for no tasks).
 - **data4.csv**: This file contains a task T3 with no qualified workers; hence, this task will never be assigned a worker.
